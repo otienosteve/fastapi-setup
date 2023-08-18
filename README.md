@@ -159,11 +159,5 @@ To summarise the code, it means 20 times create an instance of a student with va
 The final output should look similar but not exactly like the one below albeit with 20 records.     
 ![SEEDED DATA](./seeded%20data.png) 
 
-We are done with the setup part, next we will explore how to create endpoints that respond to get requests from the user and also interact with the data in our Database while doing so.   
-
-
-
-
-
-
+We are done with the setup part, next we will explore how to create endpoints that respond to get requests from the user and also interact with the data in our Database while at it.   
 
