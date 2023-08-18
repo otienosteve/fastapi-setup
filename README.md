@@ -140,7 +140,26 @@ Therefater create an instance of the faker class and create a new variable calle
 ``` 
 faker = Faker()
 students = []
+```     
+
+The code that follows looks like this. 
+```
+for i in range(20):
+    student =Student(
+        first_name = faker.first_name(),
+        last_name = faker.last_name(),
+        age = randint(16,35),
+        home_town = faker.street_name()
+    )
+    students.append(student)
+session.bulk_save_objects(students)
+session.commit()
 ``` 
+To summarise the code, it means 20 times create an instance of a student with values supplied from faker and append it to the students list. Once done bulk save the objects to the database and persist the changes. This will create 20 student entries in our Student table which we can use when working with fastapi.  
+The final output should look similar but not exactly like the one below albeit with 20 records.     
+![SEEDED DATA](./seeded%20data.png) 
+
+We are done with the setup part, next we will explore how to create endpoints that respond to get requests from the user and also interact with the data in our Database while doing so.   
 
 
 
