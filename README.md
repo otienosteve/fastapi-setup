@@ -98,5 +98,53 @@ Session = sessionmaker(bind = engine)
 session = Session()
 ```
 
+### Running migrations with alembic 
+
+The next step is to migrate our Database    
+
+open the terminal and run the command   
+``` alembic init alembic ```    
+This command will create a new folder called alembic that will contain our migrations and other configurations files. It will also create a file called almbic.ini 
+
+In the alembic.ini file replace the value assigned to sqlalchemy url with   `sqlite:///db.db` 
+
+i.e  ` sqlalchemy.url = sqlite:///db.db `   
+
+Within the alembic folder in the file named env.py, import Base from the models  
+``` from models import Base ``` 
+
+In the line that has target_metadata, assign it the value Base.metadata  
+i.e ``` target_metadata = Base.metadata ``` 
+
+once you have done this open the terminal and create a revison with the command
+
+``` alembic revision --autogenerate -m "Create Student Database" ```    
+
+since we are using SQLite we can use the VSCode extension [SQLITE](https://marketplace.visualstudio.com/items?itemName=alexcvzz.vscode-sqlite) to View our database. We should get output that looks like this. 
+
+![DATABASE PICTURE](./database%20created.png)   
+
+### Seeding Data to our Database    
+The next step is to populate our database with dummy data. 
+We will now write code in our seed.py file. 
+We will start by installing the faker package to use for generating random data.    
+``` pipenv install faker ```    
+In the seed.py file, import the Faker class from faker, thereafter import session and the Student model. We will also require randint from the random python package.   
+```
+from faker import Faker
+from models import session, Student
+from random import randint
+```  
+
+Therefater create an instance of the faker class and create a new variable called students to store all the student instances we will create.   
+``` 
+faker = Faker()
+students = []
+``` 
+
+
+
+
+
 
 
